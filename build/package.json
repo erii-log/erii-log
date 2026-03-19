@@ -1,0 +1,10 @@
+{
+  "name": "erii-log-build",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "markdown-it": "^14.0.0"
+  }
+}
