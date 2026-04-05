@@ -48,6 +48,7 @@ function renderBase(title, content, { hasEmbeds = false, currentMonth = null, ro
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${escapeHtml(title)} - 山崎エリイ活動記録</title>
+<link rel="icon" href="${root}/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="${root}/css/style.css">
 ${hasEmbeds ? `<link rel="dns-prefetch" href="https://platform.twitter.com">
 <link rel="dns-prefetch" href="https://www.instagram.com">
