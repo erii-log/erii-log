@@ -43,7 +43,7 @@ ${items}
 
 function renderBase(title, content, { hasEmbeds = false, currentMonth = null, root = "." } = {}) {
   return `<!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-root="${root}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,7 +51,10 @@ function renderBase(title, content, { hasEmbeds = false, currentMonth = null, ro
 <link rel="icon" href="${root}/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="${root}/css/style.css">
 ${hasEmbeds ? `<link rel="dns-prefetch" href="https://platform.twitter.com">
+<link rel="dns-prefetch" href="https://twitter.com">
+<link rel="dns-prefetch" href="https://x.com">
 <link rel="dns-prefetch" href="https://www.instagram.com">
+<link rel="preconnect" href="https://x.com" crossorigin>
 <link rel="preconnect" href="https://platform.twitter.com" crossorigin>
 <link rel="preconnect" href="https://www.instagram.com" crossorigin>
 <link rel="preload" as="script" href="https://platform.twitter.com/widgets.js">
@@ -63,6 +66,7 @@ ${hasEmbeds ? `<link rel="dns-prefetch" href="https://platform.twitter.com">
     <a href="${root}/index.html" class="site-title">山崎エリイ活動記録</a>
     <a href="${root}/tags/index.html">タグ一覧</a>
     <a href="${root}/about.html">このサイトについて</a>
+    <button type="button" class="search-trigger" aria-label="検索">検索 <kbd>Ctrl+K</kbd></button>
   </nav>
 </header>
 <div class="layout">
@@ -76,6 +80,17 @@ ${content}
 </footer>
 ${hasEmbeds ? `<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script async src="https://www.instagram.com/embed.js"></script>` : ""}
+<div id="search-modal" class="search-modal" hidden>
+  <div class="search-overlay"></div>
+  <div class="search-dialog">
+    <div class="search-header">
+      <input type="search" id="search-input" placeholder="日付やタグで検索…">
+      <kbd>Esc</kbd>
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+</div>
+<script src="${root}/js/search.js"></script>
 </body>
 </html>`;
 }
